@@ -4,15 +4,18 @@ import {
   NavbarBrand,
   NavbarContent,
   NavbarItem,
-  Link,
-  Button,
-} from '@nextui-org/react'
+} from '@nextui-org/navbar'
 
+import { Link } from '@nextui-org/link'
 import nextLink, { usePathname } from 'next/navigation'
+import { Button } from '@nextui-org/button'
+import { signOut, useSession } from 'next-auth/react'
 
 export default function Header() {
   const pathName = usePathname()
-  const user = false
+  const { data: session } = useSession()
+  const user = session?.user
+
   const isMenuActive = (routePath) => {
     return pathName === routePath
   }
@@ -38,7 +41,9 @@ export default function Header() {
             <Button
               as={Link}
               color="secondary"
-              onClick={() => {}}
+              onClick={() => {
+                signOut()
+              }}
               variant="ghost"
             >
               Logout

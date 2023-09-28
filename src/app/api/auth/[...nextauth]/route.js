@@ -26,7 +26,6 @@ export const authOptions = {
           if (!passwordsMatch) {
             return null
           }
-          console.log({ user })
           return user
         } catch (error) {
           console.log('Error: ', error)
@@ -38,6 +37,16 @@ export const authOptions = {
     strategy: 'jwt',
   },
   secret: process.env.NEXTAUTH_SECRET,
+  callbacks: {
+    async jwt({ token, user }) {
+      if (user) token.role = user.role
+      return token
+    },
+    async session({ session, token }) {
+      if (session?.user) session.user.role = token.role
+      return session
+    },
+  },
   pages: {
     signIn: '/login',
   },

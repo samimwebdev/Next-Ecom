@@ -21,22 +21,6 @@ function Page() {
     }
 
     try {
-      //send post request to server
-      // const res = await fetch('api/register', {
-      //   method: 'POST',
-      //   headers: {
-      //     'Content-Type': 'application/json',
-      //   },
-      //   body: JSON.stringify({
-      //     name,
-      //     email,
-      //     password,
-      //   }),
-      // })
-
-      // const data = await res.json()
-      // console.log({ data })
-
       //lOGIN USING NEXT AUTH
       const res = await signIn('credentials', {
         email,
@@ -44,19 +28,12 @@ function Page() {
         redirect: false,
       })
 
-      console.log({ res })
-
       if (res.error) {
         setError('Invalid Credentials')
         return
       }
 
       router.replace('/account')
-
-      // if (res.ok) {
-      //   router.replace('/account')
-      //   return
-      // }
     } catch (err) {
       console.log('Error During Registration', err)
       setError(error)
