@@ -5,7 +5,14 @@ import bcrypt from 'bcryptjs'
 
 export async function POST(req) {
   try {
-    const { name, email, password } = await req.json()
+    const { name, email, password, role } = await req.json()
+
+    if (role !== 'user') {
+      return NextResponse.json(
+        { message: 'User Role is not Allowed' },
+        { status: 400 }
+      )
+    }
     const hashedPassword = await bcrypt.hash(password, 10)
     await connectDB()
     const user = await User.findOne({ email })

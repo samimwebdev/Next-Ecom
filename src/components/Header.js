@@ -33,6 +33,11 @@ export default function Header() {
                 Cart
               </Link>
             </NavbarItem>
+            <NavbarItem isActive={isMenuActive('/create')}>
+              <Link as={nextLink} href="/create">
+                create
+              </Link>
+            </NavbarItem>
             <NavbarItem isActive={isMenuActive('/account')}>
               <Link as={nextLink} href="/account">
                 Account
