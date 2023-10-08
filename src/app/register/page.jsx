@@ -35,7 +35,6 @@ function Page() {
       })
 
       const data = await res.json()
-      console.log({ data })
       if (res.ok) {
         const form = evt.target
         form.reset()

@@ -10,6 +10,6 @@ export const connectDB = async () => {
     console.log('Connected to MongoDB')
     connection.isConnected = db.connections[0].readState
   } catch (err) {
-    console.log('Error connecting to MongoDB: ', error)
+    console.log('Error connecting to MongoDB: ', err)
   }
 }

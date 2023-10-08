@@ -36,7 +36,6 @@ function page() {
   //Restrict Page view
   const { data: session } = useSession()
   const user = session?.user
-  console.log(user)
 
   React.useEffect(() => {
     const isProduct = Object.values(product).every((el) => Boolean(el))
@@ -45,7 +44,6 @@ function page() {
 
   function handleChange(event) {
     const { name, value, files } = event.target
-    console.log({ files })
     if (name === 'media') {
       setProduct((prevState) => ({ ...prevState, media: files[0] }))
       setMediaPreview(window.URL.createObjectURL(files[0]))

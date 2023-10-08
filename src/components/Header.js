@@ -23,7 +23,9 @@ export default function Header() {
   return (
     <Navbar>
       <NavbarBrand>
-        <p className="font-bold text-inherit">Next Ecommerce</p>
+        <Link as={nextLink} href="/">
+          <p className="font-bold text-inherit">Next Ecommerce</p>
+        </Link>
       </NavbarBrand>
       <NavbarContent className="hidden sm:flex gap-4" justify="center">
         {user && (

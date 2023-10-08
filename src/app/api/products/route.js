@@ -21,7 +21,6 @@ export async function POST(req, res) {
   try {
     await connectDB()
     const { name, price, description, mediaUrl } = await req.json()
-    console.log(req.body)
 
     if (!name || !price || !description || !mediaUrl) {
       return NextResponse.json(

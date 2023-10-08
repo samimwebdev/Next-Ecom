@@ -1,4 +1,7 @@
 import './globals.css'
+import 'react-toastify/dist/ReactToastify.css'
+import { ToastContainer } from 'react-toastify'
+
 import { Inter } from 'next/font/google'
 import { Providers } from './providers'
 import Header from '@/components/Header'
@@ -14,7 +17,6 @@ export const metadata = {
 
 export default async function RootLayout({ children }) {
   const session = await getServerSession(authOptions)
-  console.log(session)
 
   return (
     <html lang="en">
@@ -24,6 +26,7 @@ export default async function RootLayout({ children }) {
             <Header user={session?.user} />
             {children}
           </main>
+          <ToastContainer />
         </Providers>
       </body>
     </html>

@@ -5,7 +5,6 @@ import { NextResponse } from 'next/server'
 export const GET = async (request, { params }) => {
   try {
     await connectDB()
-    console.log({ params })
     const product = await Product.findById(params.id)
     console.log({ product })
 

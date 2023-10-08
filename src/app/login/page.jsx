@@ -35,7 +35,6 @@ function Page() {
 
       router.replace('/account')
     } catch (err) {
-      console.log('Error During Registration', err)
       setError(error)
     }
   }
